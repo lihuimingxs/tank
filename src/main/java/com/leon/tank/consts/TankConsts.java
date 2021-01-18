@@ -26,33 +26,33 @@ public class TankConsts {
   /**
    * 坦克向左-宽度
    */
-  public static final int TANK_LEFT_WIDTH   = ResourceMgr.tankL.getWidth();
+  public static final int TANK_LEFT_WIDTH   = ResourceMgr.goodTankL.getWidth();
   /**
    * 坦克向左-高度
    */
-  public static final int TANK_LEFT_HEIGHT  = ResourceMgr.tankL.getHeight();
+  public static final int TANK_LEFT_HEIGHT  = ResourceMgr.goodTankL.getHeight();
   /**
    * 坦克向上-宽度
    */
-  public static final int TANK_UP_WIDTH     = ResourceMgr.tankU.getWidth();
+  public static final int TANK_UP_WIDTH     = ResourceMgr.goodTankU.getWidth();
   /**
    * 坦克向上-高度
    */
-  public static final int TANK_UP_HEIGHT    = ResourceMgr.tankU.getHeight();
+  public static final int TANK_UP_HEIGHT    = ResourceMgr.goodTankU.getHeight();
   /**
    * 坦克向右-宽度
    */
-  public static final int TANK_RIGHT_WIDTH  = ResourceMgr.tankR.getWidth();
+  public static final int TANK_RIGHT_WIDTH  = ResourceMgr.goodTankR.getWidth();
   /**
    * 坦克向右-高度
    */
-  public static final int TANK_RIGHT_HEIGHT = ResourceMgr.tankR.getHeight();
+  public static final int TANK_RIGHT_HEIGHT = ResourceMgr.goodTankR.getHeight();
   /**
    * 坦克向下-宽度
    */
-  public static final int TANK_DOWN_WIDTH   = ResourceMgr.tankD.getWidth();
+  public static final int TANK_DOWN_WIDTH   = ResourceMgr.goodTankD.getWidth();
   /**
    * 坦克向下-高度
    */
-  public static final int TANK_DOWN_HEIGHT  = ResourceMgr.tankD.getHeight();
+  public static final int TANK_DOWN_HEIGHT  = ResourceMgr.goodTankD.getHeight();
 }

@@ -23,7 +23,8 @@ import java.util.List;
 public class TankFrame extends Frame {
 
   private Image         offScreenImage = null;
-  private Tank          myTank         = new Tank(200, 600, GroupEnum.GOOD, this);
+  private Tank          myTank         = new Tank(TANK_PLAYER_1_X, TANK_PLAYER_1_Y, GroupEnum.GOOD,
+      this);
   private List<Bullet>  bullets        = new ArrayList<>();
   private List<Tank>    enemies        = new ArrayList<>();
   private List<Explode> explodes       = new ArrayList<>();
@@ -74,8 +75,8 @@ public class TankFrame extends Frame {
       }
     }
     if (enemies != null && enemies.size() > 0) {
-      for (Iterator<Tank> i = enemies.iterator(); i.hasNext();) {
-        Tank enemy = i.next();
+      for (Iterator<Tank> i = enemies.iterator(); i.hasNext(); ) {
+        Tank    enemy   = i.next();
         boolean isPaint = enemy.paint(g);
         if (!isPaint) {
           i.remove();

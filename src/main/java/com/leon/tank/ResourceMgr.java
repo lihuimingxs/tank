@@ -14,17 +14,23 @@ import javax.imageio.ImageIO;
  */
 public class ResourceMgr {
 
-  public static BufferedImage tankL, tankU, tankR, tankD;
+  public static BufferedImage goodTankL, goodTankU, goodTankR, goodTankD;
+  public static BufferedImage badTankL, badTankU, badTankR, badTankD;
   public static BufferedImage bulletL, bulletU, bulletR, bulletD;
   public static BufferedImage[] explodes = new BufferedImage[16];
 
   static {
     try {
-      tankU = ImageIO
+      goodTankU = ImageIO
           .read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankU.gif"));
-      tankL = ImageUtil.rotateImage(tankU, -90);
-      tankR = ImageUtil.rotateImage(tankU, 90);
-      tankD = ImageUtil.rotateImage(tankU, 180);
+      goodTankL = ImageUtil.rotateImage(goodTankU, -90);
+      goodTankR = ImageUtil.rotateImage(goodTankU, 90);
+      goodTankD = ImageUtil.rotateImage(goodTankU, 180);
+      badTankU = ImageIO
+          .read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankU.gif"));
+      badTankL = ImageUtil.rotateImage(goodTankU, -90);
+      badTankR = ImageUtil.rotateImage(goodTankU, 90);
+      badTankD = ImageUtil.rotateImage(goodTankU, 180);
       bulletU = ImageIO
           .read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.gif"));
       bulletL = ImageUtil.rotateImage(bulletU, -90);

@@ -8,6 +8,7 @@ import com.leon.tank.enums.GroupEnum;
 import com.leon.tank.enums.DirEnum;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 /**
@@ -59,16 +60,24 @@ public class Tank {
     // 使用图片
     switch (dir) {
       case LEFT:
-        g.drawImage(ResourceMgr.tankL, x, y, null);
+        BufferedImage tankL = this.group == GroupEnum.GOOD ? ResourceMgr.goodTankL
+                                                           : ResourceMgr.badTankL;
+        g.drawImage(tankL, x, y, null);
         break;
       case UP:
-        g.drawImage(ResourceMgr.tankU, x, y, null);
+        BufferedImage tankU = this.group == GroupEnum.GOOD ? ResourceMgr.goodTankU
+                                                           : ResourceMgr.badTankU;
+        g.drawImage(ResourceMgr.goodTankU, x, y, null);
         break;
       case RIGHT:
-        g.drawImage(ResourceMgr.tankR, x, y, null);
+        BufferedImage tankR = this.group == GroupEnum.GOOD ? ResourceMgr.goodTankR
+                                                           : ResourceMgr.badTankR;
+        g.drawImage(ResourceMgr.goodTankR, x, y, null);
         break;
       case DOWN:
-        g.drawImage(ResourceMgr.tankD, x, y, null);
+        BufferedImage tankD = this.group == GroupEnum.GOOD ? ResourceMgr.goodTankD
+                                                           : ResourceMgr.badTankD;
+        g.drawImage(ResourceMgr.goodTankD, x, y, null);
         break;
       default:
         break;
@@ -108,32 +117,21 @@ public class Tank {
     }
     switch (dir) {
       case LEFT:
-        // 边界检测
-        if (x > 0) {
-          x -= speed;
-        }
+        x -= speed;
         break;
       case UP:
-        // 边界检测，20是因为需要加上标题栏高度
-        if (y > 20) {
-          y -= speed;
-        }
+        y -= speed;
         break;
       case RIGHT:
-        // 边界检测
-        if (x < GAME_WIDTH) {
-          x += speed;
-        }
+        x += speed;
         break;
       case DOWN:
-        // 边界检测
-        if (y < GAME_HEIGHT) {
-          y += speed;
-        }
+        y += speed;
         break;
       default:
         break;
     }
+    this.boundCheck();
 
     if (GroupEnum.GOOD == this.group) {
       return;
@@ -155,6 +153,21 @@ public class Tank {
         this.fire();
         firing = 0;
       }
+    }
+  }
+
+  private void boundCheck() {
+    if (this.x < 0) {
+      x = 0;
+    }
+    if (this.y < 20) {
+      y = 20;
+    }
+    if (this.x > GAME_WIDTH - TANK_RIGHT_WIDTH) {
+      x = GAME_WIDTH - TANK_RIGHT_WIDTH;
+    }
+    if (this.y > GAME_HEIGHT - TANK_DOWN_HEIGHT) {
+      y = GAME_HEIGHT - TANK_DOWN_HEIGHT;
     }
   }
 
