@@ -14,7 +14,6 @@ public class Explode {
   private int       x;
   private int       y;
   private TankFrame tf;
-  private boolean   living;
 
   private int step = 0;
 
@@ -22,19 +21,15 @@ public class Explode {
     this.x = x;
     this.y = y;
     this.tf = tf;
-    this.living = true;
     // 播放声音
     new Audio("audio/explode.wav").play();
   }
 
   public void paint(Graphics g) {
-    g.drawImage(ResourceMgr.explodes[step++], x, y, null);
+    g.drawImage(ResourceMgr.explodes[step++], this.x, this.y, null);
     if (step >= ResourceMgr.explodes.length) {
+      tf.getExplodes().remove(this);
       step = 0;
     }
-  }
-
-  public boolean isLiving() {
-    return this.living;
   }
 }

@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -21,10 +22,11 @@ import java.util.List;
  */
 public class TankFrame extends Frame {
 
-  private Image        offScreenImage = null;
-  private Tank         myTank         = new Tank(200, 600, GroupEnum.GOOD, this);
-  private List<Bullet> bullets        = new ArrayList<>();
-  private List<Tank>   enemies        = new ArrayList<>();
+  private Image         offScreenImage = null;
+  private Tank          myTank         = new Tank(200, 600, GroupEnum.GOOD, this);
+  private List<Bullet>  bullets        = new ArrayList<>();
+  private List<Tank>    enemies        = new ArrayList<>();
+  private List<Explode> explodes       = new ArrayList<>();
 
   public TankFrame() {
     this.setSize(GAME_WIDTH, GAME_HEIGHT);
@@ -62,6 +64,7 @@ public class TankFrame extends Frame {
     g.setColor(Color.WHITE);
     g.drawString("子弹的数量" + bullets.size(), 10, 60);
     g.drawString("敌人的数量" + enemies.size(), 10, 80);
+    g.drawString("爆炸的数量" + explodes.size(), 10, 100);
     g.setColor(c);
     myTank.paint(g);
     if (bullets != null && bullets.size() > 0) {
@@ -71,8 +74,17 @@ public class TankFrame extends Frame {
       }
     }
     if (enemies != null && enemies.size() > 0) {
-      for (Tank tank : enemies) {
-        tank.paint(g);
+      for (Iterator<Tank> i = enemies.iterator(); i.hasNext();) {
+        Tank enemy = i.next();
+        boolean isPaint = enemy.paint(g);
+        if (!isPaint) {
+          i.remove();
+        }
+      }
+    }
+    if (explodes != null && explodes.size() > 0) {
+      for (Explode explode : explodes) {
+        explode.paint(g);
       }
     }
     if (bullets != null && bullets.size() > 0) {
@@ -95,6 +107,10 @@ public class TankFrame extends Frame {
 
   public List<Tank> getEnemies() {
     return enemies;
+  }
+
+  public List<Explode> getExplodes() {
+    return explodes;
   }
 
   class MyKeyListener extends KeyAdapter {

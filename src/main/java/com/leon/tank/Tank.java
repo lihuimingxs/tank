@@ -46,10 +46,10 @@ public class Tank {
     this.group = group;
   }
 
-  public void paint(Graphics g) {
+  public boolean paint(Graphics g) {
     if (!living) {
-      tf.getEnemies().remove(this);
-      return;
+//      tf.getEnemies().remove(this);
+      return false;
     }
     // 简单构建几何图形
 //    Color c = g.getColor();
@@ -74,26 +74,27 @@ public class Tank {
         break;
     }
     move();
+    return true;
   }
 
   public void fire() {
     if (DirEnum.LEFT == dir) {
       tf.getBullets().add(
           new Bullet(this.x, this.y + TANK_LEFT_HEIGHT / 2 - BULLET_LEFT_HEIGHT / 2, this.dir,
-              this.group));
+              this.group, tf));
     }
     if (DirEnum.UP == dir) {
       tf.getBullets()
           .add(new Bullet(this.x + TANK_UP_WIDTH / 2 - BULLET_UP_WIDTH / 2, this.y, this.dir,
-              this.group));
+              this.group, tf));
     }
     if (DirEnum.RIGHT == dir) {
       tf.getBullets().add(new Bullet(this.x + TANK_RIGHT_WIDTH,
-          this.y + TANK_RIGHT_HEIGHT / 2 - BULLET_RIGHT_HEIGHT / 2, this.dir, this.group));
+          this.y + TANK_RIGHT_HEIGHT / 2 - BULLET_RIGHT_HEIGHT / 2, this.dir, this.group, tf));
     }
     if (DirEnum.DOWN == dir) {
       tf.getBullets().add(new Bullet(this.x + TANK_DOWN_WIDTH / 2 - BULLET_DOWN_WIDTH / 2,
-          this.y + TANK_DOWN_HEIGHT, this.dir, this.group));
+          this.y + TANK_DOWN_HEIGHT, this.dir, this.group, tf));
     }
   }
 
@@ -107,21 +108,25 @@ public class Tank {
     }
     switch (dir) {
       case LEFT:
+        // 边界检测
         if (x > 0) {
           x -= speed;
         }
         break;
       case UP:
-        if (y > 0) {
+        // 边界检测，20是因为需要加上标题栏高度
+        if (y > 20) {
           y -= speed;
         }
         break;
       case RIGHT:
+        // 边界检测
         if (x < GAME_WIDTH) {
           x += speed;
         }
         break;
       case DOWN:
+        // 边界检测
         if (y < GAME_HEIGHT) {
           y += speed;
         }
@@ -130,23 +135,25 @@ public class Tank {
         break;
     }
 
-    if (GroupEnum.BAD == this.group) {
-      int dirRandom = random.nextInt(200);
-      if (dirRandom < 5) {
-        this.dir = DirEnum.LEFT;
-      } else if (dirRandom < 10) {
-        this.dir = DirEnum.UP;
-      } else if (dirRandom < 15) {
-        this.dir = DirEnum.RIGHT;
-      } else if (dirRandom < 20) {
-        this.dir = DirEnum.DOWN;
+    if (GroupEnum.GOOD == this.group) {
+      return;
+    }
+    // 敌方坦克随机改变方向，固定间隔开火
+    int dirRandom = random.nextInt(200);
+    if (dirRandom < 5) {
+      this.dir = DirEnum.LEFT;
+    } else if (dirRandom < 10) {
+      this.dir = DirEnum.UP;
+    } else if (dirRandom < 15) {
+      this.dir = DirEnum.RIGHT;
+    } else if (dirRandom < 20) {
+      this.dir = DirEnum.DOWN;
+    } else {
+      if (firing < 20) {
+        firing++;
       } else {
-        if (firing < 20) {
-          firing++;
-        } else {
-          this.fire();
-          firing = 0;
-        }
+        this.fire();
+        firing = 0;
       }
     }
   }

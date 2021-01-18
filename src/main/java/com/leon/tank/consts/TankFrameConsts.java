@@ -14,9 +14,9 @@ public class TankFrameConsts {
   /**
    * 游戏界面宽度
    */
-  public static final int GAME_WIDTH  = 1060;
+  public static final int GAME_WIDTH  = 1080;
   /**
    * 游戏界面高度
    */
-  public static final int GAME_HEIGHT = 800;
+  public static final int GAME_HEIGHT = 960;
 }

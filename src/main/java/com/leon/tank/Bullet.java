@@ -1,6 +1,7 @@
 package com.leon.tank;
 
 import static com.leon.tank.consts.BulletConsts.*;
+import static com.leon.tank.consts.ExplodeConsts.*;
 import static com.leon.tank.consts.TankConsts.*;
 import static com.leon.tank.consts.TankFrameConsts.*;
 
@@ -23,13 +24,15 @@ public class Bullet {
   private DirEnum   dir;
   private int       speed;
   private boolean   living;
+  private TankFrame tf;
   private GroupEnum group;
   private Rectangle rectangle;
 
-  public Bullet(int x, int y, DirEnum dir, GroupEnum group) {
+  public Bullet(int x, int y, DirEnum dir, GroupEnum group, TankFrame tf) {
     this.x = x;
     this.y = y;
     this.dir = dir;
+    this.tf = tf;
     this.speed = 10;
     this.living = true;
     this.group = group;
@@ -133,6 +136,10 @@ public class Bullet {
     if (bulletRect.intersects(tankRect)) {
       tank.die();
       this.die();
+      int     eX      = tank.getX() + (TANK_LEFT_WIDTH >> 2) - (EXPLODE_WIDTH >> 2);
+      int     eY      = tank.getY() + (TANK_LEFT_HEIGHT >> 2) - (EXPLODE_HEIGHT >> 2);
+      Explode explode = new Explode(eX, eY, tf);
+      tf.getExplodes().add(explode);
     }
   }
 
