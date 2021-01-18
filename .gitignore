@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea
+*.iml
+*.log
+.DS_Store
+.setting
+.project
+logs/
+target/
+rebel.xml
