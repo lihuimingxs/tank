@@ -8,6 +8,7 @@ import com.leon.tank.enums.GroupEnum;
 import com.leon.tank.enums.DirEnum;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -32,6 +33,7 @@ public class Tank {
   private Random    random;
   private GroupEnum group;
   private int       firing;
+  private Rectangle rectangle;
 
   public Tank(int x, int y, GroupEnum group, TankFrame tf) {
     this.x = x;
@@ -45,6 +47,7 @@ public class Tank {
     this.living = true;
     this.random = new Random();
     this.group = group;
+    this.rectangle = new Rectangle(this.x, this.y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
   }
 
   public boolean paint(Graphics g) {
@@ -132,6 +135,9 @@ public class Tank {
         break;
     }
     this.boundCheck();
+    // 更新 rectangle
+    rectangle.x = x;
+    rectangle.y = y;
 
     if (GroupEnum.GOOD == this.group) {
       return;
@@ -209,5 +215,13 @@ public class Tank {
 
   public void setGroup(GroupEnum group) {
     this.group = group;
+  }
+
+  public Rectangle getRectangle() {
+    return rectangle;
+  }
+
+  public void setRectangle(Rectangle rectangle) {
+    this.rectangle = rectangle;
   }
 }

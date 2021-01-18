@@ -36,7 +36,7 @@ public class Bullet {
     this.speed = 10;
     this.living = true;
     this.group = group;
-    this.rectangle = new Rectangle(x, y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
+    this.rectangle = new Rectangle(this.x, this.y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
   }
 
   public void paint(Graphics g) {
@@ -85,6 +85,9 @@ public class Bullet {
       default:
         break;
     }
+    // 更新 rectangle
+    rectangle.x = x;
+    rectangle.y = y;
 
     if (x < 0 || y < 0 || x > GAME_WIDTH || y > GAME_HEIGHT) {
       living = false;
@@ -96,44 +99,8 @@ public class Bullet {
       return;
     }
 
-    Rectangle bulletRect;
-    Rectangle tankRect;
-    switch (dir) {
-      case LEFT:
-        bulletRect = new Rectangle(this.x, this.y, BULLET_LEFT_WIDTH, BULLET_LEFT_HEIGHT);
-        break;
-      case UP:
-        bulletRect = new Rectangle(this.x, this.y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
-        break;
-      case RIGHT:
-        bulletRect = new Rectangle(this.x, this.y, BULLET_RIGHT_WIDTH, BULLET_RIGHT_HEIGHT);
-        break;
-      case DOWN:
-        bulletRect = new Rectangle(this.x, this.y, BULLET_DOWN_WIDTH, BULLET_DOWN_HEIGHT);
-        break;
-      default:
-        bulletRect = new Rectangle();
-        break;
-    }
-    switch (tank.getDir()) {
-      case LEFT:
-        tankRect = new Rectangle(tank.getX(), tank.getY(), TANK_LEFT_WIDTH, TANK_LEFT_HEIGHT);
-        break;
-      case UP:
-        tankRect = new Rectangle(tank.getX(), tank.getY(), TANK_UP_WIDTH, TANK_UP_HEIGHT);
-        break;
-      case RIGHT:
-        tankRect = new Rectangle(tank.getX(), tank.getY(), TANK_RIGHT_WIDTH, TANK_RIGHT_HEIGHT);
-        break;
-      case DOWN:
-        tankRect = new Rectangle(tank.getX(), tank.getY(), TANK_DOWN_WIDTH, TANK_DOWN_HEIGHT);
-        break;
-      default:
-        tankRect = new Rectangle();
-        break;
-    }
     // 判断是否相交
-    if (bulletRect.intersects(tankRect)) {
+    if (this.rectangle.intersects(tank.getRectangle())) {
       tank.die();
       this.die();
       int     eX      = tank.getX() + (TANK_LEFT_WIDTH >> 2) - (EXPLODE_WIDTH >> 2);
