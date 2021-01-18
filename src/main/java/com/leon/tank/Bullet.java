@@ -5,6 +5,7 @@ import static com.leon.tank.consts.ExplodeConsts.*;
 import static com.leon.tank.consts.TankConsts.*;
 import static com.leon.tank.consts.TankFrameConsts.*;
 
+import com.leon.tank.config.ResourceMgr;
 import com.leon.tank.enums.GroupEnum;
 import com.leon.tank.enums.DirEnum;
 import java.awt.Graphics;

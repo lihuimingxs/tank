@@ -1,5 +1,6 @@
 package com.leon.tank;
 
+import com.leon.tank.config.ResourceMgr;
 import java.awt.Graphics;
 
 /**

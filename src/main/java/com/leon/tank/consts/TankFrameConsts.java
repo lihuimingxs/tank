@@ -2,8 +2,6 @@ package com.leon.tank.consts;
 
 import static com.leon.tank.consts.TankConsts.TANK_UP_HEIGHT;
 
-import com.leon.tank.ResourceMgr;
-
 /**
  * 坦克类常量
  *

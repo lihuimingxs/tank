@@ -4,6 +4,7 @@ import static com.leon.tank.consts.BulletConsts.*;
 import static com.leon.tank.consts.TankConsts.*;
 import static com.leon.tank.consts.TankFrameConsts.*;
 
+import com.leon.tank.config.ResourceMgr;
 import com.leon.tank.enums.GroupEnum;
 import com.leon.tank.enums.DirEnum;
 import java.awt.Color;

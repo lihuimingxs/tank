@@ -1,4 +1,4 @@
-package com.leon.tank;
+package com.leon.tank.config;
 
 import com.leon.tank.util.ImageUtil;
 import java.awt.image.BufferedImage;

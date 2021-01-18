@@ -1,6 +1,6 @@
 package com.leon.tank.consts;
 
-import com.leon.tank.ResourceMgr;
+import com.leon.tank.config.ResourceMgr;
 
 /**
  * 子弹类常量
