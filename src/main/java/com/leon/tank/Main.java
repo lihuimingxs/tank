@@ -7,6 +7,13 @@ import com.leon.tank.enums.GroupEnum;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Main 方法
+ *
+ * @author : lihuiming
+ * @version : 2021/1/18 20:11
+ * @modified:
+ */
 public class Main {
 
   public static void main(String[] args) throws InterruptedException {

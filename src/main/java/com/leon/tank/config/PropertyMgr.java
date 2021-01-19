@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
+ * 配置管理类
+ *
  * @author : lihuiming
  * @version : 2021/1/18 20:11
  * @modified:
