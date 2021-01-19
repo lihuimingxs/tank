@@ -1,3 +1,11 @@
+# 游戏界面宽度
+gameWidth=1000
+# 游戏界面高度
+gameHeight=720
 # initialization
 # 初始化敌方坦克数量
 initEnemiesCount=3
+# 初始化坦克速度
+initGoodTankSpeed=5
+# 初始化子弹速度
+initBulletSpeed=10
