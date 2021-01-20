@@ -1,6 +1,5 @@
 package com.leon.tank.config;
 
-import java.io.IOException;
 import java.util.Properties;
 
 /**

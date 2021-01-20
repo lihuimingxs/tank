@@ -5,7 +5,6 @@ import static com.leon.tank.consts.TankFrameConsts.*;
 import com.leon.tank.config.PropertyMgr;
 import com.leon.tank.enums.GroupEnum;
 import java.util.Objects;
-import java.util.Random;
 
 /**
  * Main 方法
