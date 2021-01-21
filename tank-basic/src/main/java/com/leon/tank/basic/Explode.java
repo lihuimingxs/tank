@@ -1,6 +1,6 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
-import com.leon.tank.config.ResourceMgr;
+import com.leon.tank.basic.config.ResourceMgr;
 import java.awt.Graphics;
 
 /**

@@ -1,9 +1,9 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
-import static com.leon.tank.consts.TankFrameConsts.*;
+import static com.leon.tank.basic.consts.TankFrameConsts.*;
 
-import com.leon.tank.config.PropertyMgr;
-import com.leon.tank.enums.GroupEnum;
+import com.leon.tank.basic.config.PropertyMgr;
+import com.leon.tank.basic.enums.GroupEnum;
 import java.util.Objects;
 
 /**
@@ -18,9 +18,10 @@ public class Main {
   public static void main(String[] args) throws InterruptedException {
     TankFrame tf = new TankFrame();
 
+    System.out.println(PropertyMgr.get("initEnemiesCount"));
     // 初始化敌方坦克
     int initTankCount = Integer
-        .parseInt(Objects.requireNonNull(PropertyMgr.get("initTankCount")).toString());
+        .parseInt(Objects.requireNonNull(PropertyMgr.get("initEnemiesCount")).toString());
     int x = 0, y = 20;
     for (int i = 0; i < initTankCount; i++) {
       tf.getEnemies().add(new Tank(x, y, GroupEnum.BAD, tf));

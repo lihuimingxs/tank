@@ -1,9 +1,8 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
-import static com.leon.tank.consts.TankFrameConsts.*;
-
-import com.leon.tank.enums.GroupEnum;
-import com.leon.tank.enums.DirEnum;
+import com.leon.tank.basic.consts.TankFrameConsts;
+import com.leon.tank.basic.enums.GroupEnum;
+import com.leon.tank.basic.enums.DirEnum;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -23,14 +22,15 @@ import java.util.List;
 public class TankFrame extends Frame {
 
   private Image         offScreenImage = null;
-  private Tank          myTank         = new Tank(TANK_PLAYER_1_X, TANK_PLAYER_1_Y, GroupEnum.GOOD,
+  private Tank          myTank         = new Tank(
+      TankFrameConsts.TANK_PLAYER_1_X, TankFrameConsts.TANK_PLAYER_1_Y, GroupEnum.GOOD,
       this);
   private List<Bullet>  bullets        = new ArrayList<>();
   private List<Tank>    enemies        = new ArrayList<>();
   private List<Explode> explodes       = new ArrayList<>();
 
   public TankFrame() {
-    this.setSize(GAME_WIDTH, GAME_HEIGHT);
+    this.setSize(TankFrameConsts.GAME_WIDTH, TankFrameConsts.GAME_HEIGHT);
     this.setResizable(false);
     this.setTitle("tank war");
     this.setVisible(true);
@@ -48,12 +48,12 @@ public class TankFrame extends Frame {
   @Override
   public void update(Graphics g) {
     if (offScreenImage == null) {
-      offScreenImage = this.createImage(GAME_WIDTH, GAME_HEIGHT);
+      offScreenImage = this.createImage(TankFrameConsts.GAME_WIDTH, TankFrameConsts.GAME_HEIGHT);
     }
     Graphics gOffScreen = offScreenImage.getGraphics();
     Color    c          = gOffScreen.getColor();
     gOffScreen.setColor(Color.BLACK);
-    gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    gOffScreen.fillRect(0, 0, TankFrameConsts.GAME_WIDTH, TankFrameConsts.GAME_HEIGHT);
     gOffScreen.setColor(c);
     paint(gOffScreen);
     g.drawImage(offScreenImage, 0, 0, null);

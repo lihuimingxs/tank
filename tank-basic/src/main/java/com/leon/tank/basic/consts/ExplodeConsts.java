@@ -1,6 +1,6 @@
-package com.leon.tank.consts;
+package com.leon.tank.basic.consts;
 
-import com.leon.tank.config.ResourceMgr;
+import com.leon.tank.basic.config.ResourceMgr;
 
 /**
  * 爆炸类常量

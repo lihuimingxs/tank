@@ -1,13 +1,13 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
-import static com.leon.tank.consts.BulletConsts.*;
-import static com.leon.tank.consts.ExplodeConsts.*;
-import static com.leon.tank.consts.TankConsts.*;
-import static com.leon.tank.consts.TankFrameConsts.*;
+import static com.leon.tank.basic.consts.ExplodeConsts.*;
 
-import com.leon.tank.config.ResourceMgr;
-import com.leon.tank.enums.GroupEnum;
-import com.leon.tank.enums.DirEnum;
+import com.leon.tank.basic.config.ResourceMgr;
+import com.leon.tank.basic.consts.BulletConsts;
+import com.leon.tank.basic.consts.TankConsts;
+import com.leon.tank.basic.consts.TankFrameConsts;
+import com.leon.tank.basic.enums.DirEnum;
+import com.leon.tank.basic.enums.GroupEnum;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -37,7 +37,7 @@ public class Bullet {
     this.speed = 10;
     this.living = true;
     this.group = group;
-    this.rectangle = new Rectangle(this.x, this.y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
+    this.rectangle = new Rectangle(this.x, this.y, BulletConsts.BULLET_UP_WIDTH, BulletConsts.BULLET_UP_HEIGHT);
   }
 
   public void paint(Graphics g) {
@@ -90,7 +90,7 @@ public class Bullet {
     rectangle.x = x;
     rectangle.y = y;
 
-    if (x < 0 || y < 0 || x > GAME_WIDTH || y > GAME_HEIGHT) {
+    if (x < 0 || y < 0 || x > TankFrameConsts.GAME_WIDTH || y > TankFrameConsts.GAME_HEIGHT) {
       living = false;
     }
   }
@@ -104,8 +104,8 @@ public class Bullet {
     if (this.rectangle.intersects(tank.getRectangle())) {
       tank.die();
       this.die();
-      int     eX      = tank.getX() + (TANK_LEFT_WIDTH >> 2) - (EXPLODE_WIDTH >> 2);
-      int     eY      = tank.getY() + (TANK_LEFT_HEIGHT >> 2) - (EXPLODE_HEIGHT >> 2);
+      int     eX      = tank.getX() + (TankConsts.TANK_LEFT_WIDTH >> 2) - (EXPLODE_WIDTH >> 2);
+      int     eY      = tank.getY() + (TankConsts.TANK_LEFT_HEIGHT >> 2) - (EXPLODE_HEIGHT >> 2);
       Explode explode = new Explode(eX, eY, tf);
       tf.getExplodes().add(explode);
     }

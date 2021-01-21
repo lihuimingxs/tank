@@ -1,6 +1,6 @@
-package com.leon.tank.config;
+package com.leon.tank.basic.config;
 
-import com.leon.tank.util.ImageUtil;
+import com.leon.tank.basic.util.ImageUtil;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;

@@ -1,5 +1,5 @@
 
-package com.leon.tank;
+package com.leon.tank.basic;
 
 import java.io.IOException;
 import javax.sound.sampled.AudioFormat;

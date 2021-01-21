@@ -1,4 +1,4 @@
-package com.leon.tank.enums;
+package com.leon.tank.basic.enums;
 
 /**
  * 分组类枚举

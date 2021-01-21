@@ -1,12 +1,11 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
-import static com.leon.tank.consts.BulletConsts.*;
-import static com.leon.tank.consts.TankConsts.*;
-import static com.leon.tank.consts.TankFrameConsts.*;
-
-import com.leon.tank.config.ResourceMgr;
-import com.leon.tank.enums.GroupEnum;
-import com.leon.tank.enums.DirEnum;
+import com.leon.tank.basic.config.ResourceMgr;
+import com.leon.tank.basic.consts.BulletConsts;
+import com.leon.tank.basic.consts.TankConsts;
+import com.leon.tank.basic.consts.TankFrameConsts;
+import com.leon.tank.basic.enums.DirEnum;
+import com.leon.tank.basic.enums.GroupEnum;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -23,9 +22,9 @@ import java.util.Random;
 public class Tank {
 
   private int       x;
-  private int       y;
-  private DirEnum   dir;
-  private int       speed;
+  private int     y;
+  private DirEnum dir;
+  private int     speed;
   private int       level;
   private boolean   moving;
   private Color     color;
@@ -40,7 +39,7 @@ public class Tank {
     this.x = x;
     this.y = y;
     this.dir = DirEnum.UP;
-    this.level = LEVEL_1;
+    this.level = TankConsts.LEVEL_1;
     this.moving = true;
     this.speed = 5;
     this.color = Color.WHITE;
@@ -48,12 +47,12 @@ public class Tank {
     this.living = true;
     this.random = new Random();
     this.group = group;
-    this.rectangle = new Rectangle(this.x, this.y, BULLET_UP_WIDTH, BULLET_UP_HEIGHT);
+    this.rectangle = new Rectangle(this.x, this.y, BulletConsts.BULLET_UP_WIDTH, BulletConsts.BULLET_UP_HEIGHT);
   }
 
   public boolean paint(Graphics g) {
     if (!living) {
-//      tf.getEnemies().remove(this);
+      tf.getEnemies().remove(this);
       return false;
     }
     // 简单构建几何图形
@@ -93,21 +92,21 @@ public class Tank {
   public void fire() {
     if (DirEnum.LEFT == dir) {
       tf.getBullets().add(
-          new Bullet(this.x, this.y + TANK_LEFT_HEIGHT / 2 - BULLET_LEFT_HEIGHT / 2, this.dir,
+          new Bullet(this.x, this.y + TankConsts.TANK_LEFT_HEIGHT / 2 - BulletConsts.BULLET_LEFT_HEIGHT / 2, this.dir,
               this.group, tf));
     }
     if (DirEnum.UP == dir) {
       tf.getBullets()
-          .add(new Bullet(this.x + TANK_UP_WIDTH / 2 - BULLET_UP_WIDTH / 2, this.y, this.dir,
+          .add(new Bullet(this.x + TankConsts.TANK_UP_WIDTH / 2 - BulletConsts.BULLET_UP_WIDTH / 2, this.y, this.dir,
               this.group, tf));
     }
     if (DirEnum.RIGHT == dir) {
-      tf.getBullets().add(new Bullet(this.x + TANK_RIGHT_WIDTH,
-          this.y + TANK_RIGHT_HEIGHT / 2 - BULLET_RIGHT_HEIGHT / 2, this.dir, this.group, tf));
+      tf.getBullets().add(new Bullet(this.x + TankConsts.TANK_RIGHT_WIDTH,
+          this.y + TankConsts.TANK_RIGHT_HEIGHT / 2 - BulletConsts.BULLET_RIGHT_HEIGHT / 2, this.dir, this.group, tf));
     }
     if (DirEnum.DOWN == dir) {
-      tf.getBullets().add(new Bullet(this.x + TANK_DOWN_WIDTH / 2 - BULLET_DOWN_WIDTH / 2,
-          this.y + TANK_DOWN_HEIGHT, this.dir, this.group, tf));
+      tf.getBullets().add(new Bullet(this.x + TankConsts.TANK_DOWN_WIDTH / 2 - BulletConsts.BULLET_DOWN_WIDTH / 2,
+          this.y + TankConsts.TANK_DOWN_HEIGHT, this.dir, this.group, tf));
     }
   }
 
@@ -144,7 +143,7 @@ public class Tank {
       return;
     }
     // 敌方坦克随机改变方向，固定间隔开火
-    int dirRandom = random.nextInt(200);
+    int dirRandom = random.nextInt(300);
     if (dirRandom < 5) {
       this.dir = DirEnum.LEFT;
     } else if (dirRandom < 10) {
@@ -170,11 +169,11 @@ public class Tank {
     if (this.y < 20) {
       y = 20;
     }
-    if (this.x > GAME_WIDTH - TANK_RIGHT_WIDTH) {
-      x = GAME_WIDTH - TANK_RIGHT_WIDTH;
+    if (this.x > TankFrameConsts.GAME_WIDTH - TankConsts.TANK_RIGHT_WIDTH) {
+      x = TankFrameConsts.GAME_WIDTH - TankConsts.TANK_RIGHT_WIDTH;
     }
-    if (this.y > GAME_HEIGHT - TANK_DOWN_HEIGHT) {
-      y = GAME_HEIGHT - TANK_DOWN_HEIGHT;
+    if (this.y > TankFrameConsts.GAME_HEIGHT - TankConsts.TANK_DOWN_HEIGHT) {
+      y = TankFrameConsts.GAME_HEIGHT - TankConsts.TANK_DOWN_HEIGHT;
     }
   }
 

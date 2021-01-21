@@ -1,4 +1,4 @@
-package com.leon.tank;
+package com.leon.tank.basic;
 
 
 import static org.junit.Assert.*;

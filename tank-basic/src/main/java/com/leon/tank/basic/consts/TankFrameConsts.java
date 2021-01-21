@@ -1,6 +1,6 @@
-package com.leon.tank.consts;
+package com.leon.tank.basic.consts;
 
-import static com.leon.tank.consts.TankConsts.TANK_UP_HEIGHT;
+import static com.leon.tank.basic.consts.TankConsts.TANK_UP_HEIGHT;
 
 /**
  * 坦克类常量

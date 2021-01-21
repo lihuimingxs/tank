@@ -1,4 +1,4 @@
-package com.leon.tank.config;
+package com.leon.tank.basic.config;
 
 import java.util.Properties;
 

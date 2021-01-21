@@ -1,4 +1,4 @@
-package com.leon.tank.util;
+package com.leon.tank.basic.util;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
