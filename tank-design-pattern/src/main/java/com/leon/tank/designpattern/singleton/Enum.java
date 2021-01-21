@@ -3,6 +3,8 @@ package com.leon.tank.designpattern.singleton;
 /**
  * 枚举式（线程安全，防止反序列化）
  *
+ * 说明：由于枚举类没有构造方法，所以无法被反序列化
+ *
  * @author : lihuiming
  * @version : 2021/1/20 23:34
  * @modified:
