@@ -5,4 +5,4 @@
  * @modified:
  * @version : 2021/1/20 23:38
  */
-package com.leon.tank.tank.designpattern;
+package com.leon.tank.basic.tank.designpattern;

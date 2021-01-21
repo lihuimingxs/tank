@@ -1,4 +1,4 @@
-package com.leon.tank.tank.designpattern;
+package com.leon.tank.designpattern;
 
 /**
  * Main 方法
